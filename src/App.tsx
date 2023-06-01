@@ -1,6 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home, Video, Register, Login, NotFound } from "./pages";
+import Navbar from './components/navbar';
+
 const App = () => {
   return (
-    <div className=" text-center text-6xl font-extrabold">Hello world</div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/video/:videoId" element={<Video />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 };
 
