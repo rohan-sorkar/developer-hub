@@ -5,7 +5,7 @@ const VideoItem = () => {
     <div className="col-span-12 rounded-xl border shadow-md duration-300 hover:scale-[1.03] sm:col-span-6 md:col-span-3">
       <div className="flex w-full flex-col">
         <div className="relative">
-          <Link to={`/video/1`}>
+          <Link to={`/videos/1`}>
             <img
               src="https://i.ytimg.com/vi/3rKyewl7wzo/maxresdefault.jpg"
               className="h-auto w-full rounded-xl"
@@ -18,7 +18,7 @@ const VideoItem = () => {
         </div>
 
         <div className="flex flex-row gap-2 px-5 pb-7 pt-4">
-          <Link to={`/video/1`}>
+          <Link to={`/videos/1`}>
             <img
               src="https://yt3.ggpht.com/tLOaVyDRQq46qga99PFlP9b3PRcni8gBJepNOecsgIdADpxU10p6w0VD-fZ8VvtqeldN6IHYOj0=s88-c-k-c0x00ffffff-no-rj"
               className="mt-2 h-6 w-6 shrink-0 rounded-full"

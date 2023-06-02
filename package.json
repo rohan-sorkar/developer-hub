@@ -12,7 +12,6 @@
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-beautiful-dnd": "^13.1.4",
-    "@types/react-icons": "^3.0.0",
     "emoji-picker-react": "^4.4.9",
     "gravatar-url": "^4.0.1",
     "moment": "^2.29.4",

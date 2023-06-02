@@ -4,7 +4,7 @@ const RelatedVideoItem = () => {
   return (
     <div className="mb-4 flex w-full flex-row gap-2 cursor-pointer border rounded-lg p-2 hover:scale-105 duration-300 hover:shadow">
       <div className="relative h-auto w-[168px] flex-none">
-        <Link to={`/video/1`}>
+        <Link to={`/videos/1`}>
           <img
             src="https://i.ytimg.com/vi/3rKyewl7wzo/maxresdefault.jpg"
             className="cursor-pointer rounded-md h-full"
