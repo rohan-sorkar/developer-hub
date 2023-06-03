@@ -1,14 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  selectedTags: []
+} as {selectedTags: string[]};
 
 const tagsSlice = createSlice({
   name: "tags",
   initialState,
   reducers: {
-    //reducers will be here
+    selectTag: (state, action: PayloadAction<string>) => {
+      if(state.selectedTags.includes(action.payload)) {
+          state.selectedTags = state.selectedTags.filter(t => t !== action.payload) 
+      } else {
+          state.selectedTags.push(action.payload)
+      }
+  },
+  resetTag: (state, _action: {payload?: string}) => {
+      state.selectedTags = []
+  }
   },
 });
 
-export const {} = tagsSlice.actions;
+export const {selectTag, resetTag} = tagsSlice.actions;
 export default tagsSlice.reducer;

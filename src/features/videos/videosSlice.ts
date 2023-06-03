@@ -1,14 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  searchTerm: "",
+} as { searchTerm: string };
 
 const videosSlice = createSlice({
   name: "videos",
   initialState,
   reducers: {
-    //reducers will be here
+    searchInputChange: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload;
+    },
   },
 });
 
-export const {} = videosSlice.actions;
+export const { searchInputChange } = videosSlice.actions;
 export default videosSlice.reducer;

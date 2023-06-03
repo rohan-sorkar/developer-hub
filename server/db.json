@@ -1,64 +1,22 @@
 {
   "users": [
     {
-      "email": "rohansaju0@gmail.com",
-      "password": "$2a$10$pqjkgbsof0sFGT7q/1.1we5VXaRcRVobizUgx0hdgmrfqn4PaKAG2",
-      "name": "Rohan islam",
+      "email": "roar@gmail.com",
+      "password": "$2a$10$zIBSeemD7Bl04ftA2dNn3.VknvWHXHWOZnw8NdiauBEkUIKjtuavu",
+      "name": "roar",
       "id": 1
     },
     {
       "email": "rohan@gmail.com",
-      "password": "$2a$10$C64oAACK.ceSgTxC0j9eUu0PAP5IrDmI0A8dPgMi/oEgTjj1tsSKC",
+      "password": "$2a$10$OSi5FYDxSsAXzfPoVHK6Seapvx.JyPjN/LBhLfTZa4eslDoxJOW6e",
       "name": "Rohan islam",
       "id": 2
     },
     {
-      "email": "admin@gmail.com",
-      "password": "$2a$10$orBMfwI8KlzkpFIAgQZ3V.jRfmn8oqYoDIxundJvIBtcL/2qd6hY2",
-      "name": "saju",
-      "id": 3
-    },
-    {
-      "email": "dambo@gmail.com",
-      "password": "$2a$10$5wZBtt.gyZ3GFK6eXYryfecNOMRWaQ89kUYifP8fklpiTOY82oaJO",
-      "name": "dfdf",
-      "id": 4
-    },
-    {
-      "email": "akajahjdkfj0@gmail.com",
-      "password": "$2a$10$2dH9j7NMasBzos0rsOS9r.MZUYrxLxw/twRsd5wiF5Q2ZQVsTVJri",
-      "name": "dfdf",
-      "id": 5
-    },
-    {
-      "email": "damboc@gmail.com",
-      "password": "$2a$10$bp7xzMPK9N2h0Ab7S3woIOlq1QOYNDB5kCLLUSGYTpcPYjvAR9Aeu",
-      "name": "dfdf",
-      "id": 6
-    },
-    {
-      "email": "damboli@gmail.com",
-      "password": "$2a$10$tFTqMAetKuJLOyKIwA0UQOpWKKBFtknfmoLrX8HFq5upFnBSJ3heG",
+      "email": "rohansaju0@gmail.com",
+      "password": "$2a$10$T8IlOrruOxCck06ayfpl6OBGHow83dAqti91snRE5HzA0s7Vx7.Cm",
       "name": "Rohan islam",
-      "id": 7
-    },
-    {
-      "email": "adminn@gmail.com",
-      "password": "$2a$10$UfQpHOKzbCKdETEnjF32kudoi4yJ4wMWjqHepVowwkQu9girrDBH.",
-      "name": "admin",
-      "id": 8
-    },
-    {
-      "email": "debroh@gmail.com",
-      "password": "$2a$10$dq8nKnGcWd0hSUht1TdAWO7xczOfGh4hjjmqkEkHOUrGXP6rWX2m2",
-      "name": "debroh",
-      "id": 9
-    },
-    {
-      "email": "helloworld@gmail.com",
-      "password": "$2a$10$MiASm2mBH9VvKzBhEjunOeK54d1eMJE1AhIH.FsyQ4Wo85MqPMUuO",
-      "name": "hello",
-      "id": 10
+      "id": 3
     }
   ],
   "videos": [

@@ -1,9 +1,12 @@
+import { TagType } from "../../types";
 import apiSlice from "../api/apiSlice";
 
 const tagsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    //endpoints will be here
+    getTags: builder.query<TagType[], void>({
+      query: () => '/tags'
+    })
   }),
 });
 
-export const {} = tagsApi;
+export const {useGetTagsQuery} = tagsApi;
