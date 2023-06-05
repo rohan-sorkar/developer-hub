@@ -13,6 +13,10 @@ const videosApi = apiSlice.injectEndpoints({
         };
       }
     }),
+    getVideo: builder.query<VideoType, string>({
+      query: (id) => `/videos/${id}`,
+      providesTags: ['Video']
+    }),
     getAllVideos: builder.query<VideoType[], void>({
       query: () => '/videos',
     }),
@@ -33,9 +37,33 @@ const videosApi = apiSlice.injectEndpoints({
           // do nothing
         }
       },
-    })
+    }),
+    getRelatedVideos: builder.query<VideoType[],{id: number, title: string}>({
+      query: ({id, title}) => {
+        const titleToArray = title.split(' ');
+        const queryString = titleToArray.map((t) => `title_like=${t}`).join('&');
+
+        return `/videos?${queryString}&id_ne=${id}`
+      }
+    }),
+    likeVideo: builder.mutation<VideoType, {id: number, video: VideoType}>({
+      query: ({id, video}) => ({
+        url: `/videos/${id}`,
+        method: 'PATCH',
+        body: video
+      }),
+      invalidatesTags: ['Video']
+    }),
+    disLikeVideo: builder.mutation<VideoType, {id: number, video: VideoType}>({
+      query: ({id, video}) => ({
+        url: `/videos/${id}`,
+        method: 'PATCH',
+        body: video
+      }),
+      invalidatesTags: ['Video']
+    }),
   }),
 });
 
-export const {useGetVideosQuery, useGetAllVideosQuery} = videosApi;
+export const {useGetVideosQuery, useGetAllVideosQuery, useGetVideoQuery, useGetRelatedVideosQuery, useLikeVideoMutation, useDisLikeVideoMutation} = videosApi;
 export default videosApi;

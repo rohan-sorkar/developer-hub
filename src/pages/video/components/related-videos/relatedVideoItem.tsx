@@ -1,33 +1,33 @@
 import { Link } from "react-router-dom";
+import { VideoType } from "../../../../types";
 
-const RelatedVideoItem = () => {
+const RelatedVideoItem = ({ video }: { video: VideoType }) => {
   return (
-    <div className="mb-4 flex w-full flex-row gap-2 cursor-pointer border rounded-lg p-2 hover:scale-105 duration-300 hover:shadow">
+    <Link
+      to={`/videos/${video?.id}`}
+      className="mb-4 flex w-full cursor-pointer flex-row gap-2 rounded-lg border p-2 duration-300 hover:scale-105 hover:shadow"
+    >
       <div className="relative h-auto w-[168px] flex-none">
-        <Link to={`/videos/1`}>
-          <img
-            src="https://i.ytimg.com/vi/3rKyewl7wzo/maxresdefault.jpg"
-            className="cursor-pointer rounded-md h-full"
-            alt="Some video title"
-          />
-        </Link>
+        <img
+          src={video?.thumbnail}
+          className="h-full cursor-pointer rounded-md"
+          alt="Some video title"
+        />
         <p className="py absolute bottom-2 right-2 bg-gray-900 px-1 text-xs text-gray-100">
-          8:15
+          {video?.duration}
         </p>
       </div>
 
       <div className="flex w-full flex-col">
-        <p className="text-sm font-semibold text-slate-900">
-          Why you SHOULD be using TypeScript with React
-        </p>
+        <p className="text-sm font-semibold text-slate-900">{video?.title}</p>
         <span className="mt-2 text-xs text-gray-400 hover:text-gray-600">
-          Debra king🔥
+          {video?.author}
         </span>
         <p className="mt-1 text-xs text-gray-400">
-          16.1k views . February 2, 2022
+          {video?.views} views . {video?.date?.toString()}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

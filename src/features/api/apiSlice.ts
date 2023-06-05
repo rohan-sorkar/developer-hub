@@ -25,6 +25,7 @@ const apiSlice = createApi({
     
     return result;
   },
+  tagTypes: ['Video'],
   endpoints: () => ({}),
 });
 

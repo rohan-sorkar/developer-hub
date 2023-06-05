@@ -49,3 +49,12 @@ export interface VideoType {
   dislike: string[];
   id: 45;
 }
+
+export interface CommentType {
+  id: string,
+  title: string
+  name: string
+  email: string
+  date: Date
+  likes: string[]
+}
