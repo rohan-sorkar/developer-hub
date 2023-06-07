@@ -9,7 +9,7 @@ import Error from "../../components/ui/error";
 
 const Video = () => {
   const {videoId} = useParams();
-  const {data, isLoading, isError, error} = useGetVideoQuery(videoId as string);
+  const {data, isLoading, isError} = useGetVideoQuery(videoId as string);
 
   //decide what to render
   let content;

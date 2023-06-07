@@ -1,14 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { string } from "yup";
 
-const initialState = {};
+const initialState = {
+  updateCommentId: ''
+} as { updateCommentId: string };
 
 const commentsSlice = createSlice({
   name: "comments",
   initialState,
   reducers: {
-    //reducers will be here
+    editComment: (state, action: PayloadAction<string>) => {
+      state.updateCommentId = action.payload
+  }
   },
 });
 
-export const {} = commentsSlice.actions;
+export const {editComment} = commentsSlice.actions;
 export default commentsSlice.reducer;

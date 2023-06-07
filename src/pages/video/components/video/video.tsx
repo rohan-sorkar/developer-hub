@@ -7,7 +7,7 @@ import { VideoType } from "../../../../types";
 export const Video = ({video} : {video: VideoType}) => {
   return (
     <div className="col-span-full w-full space-y-8 lg:col-span-2">
-      <VideoPlayer link={video.link} title={video.title}/>
+      <VideoPlayer link={video?.link} title={video?.title}/>
       <div>
         <LikeDislike video={video} />
         <VideoDescription video={video}/>

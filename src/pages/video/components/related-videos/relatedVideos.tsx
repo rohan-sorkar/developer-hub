@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Error from "../../../../components/ui/error";
 import RelatedVideoLoader from "../../../../components/ui/loaders/relatedVideoLoader";
 import { useGetRelatedVideosQuery } from "../../../../features/videos/videosApi";
@@ -6,7 +5,6 @@ import RelatedVideoItem from "./relatedVideoItem";
 
 const RelatedVideos = ({ id, title }: { id: number; title: string }) => {
   const { data, isLoading, isError } = useGetRelatedVideosQuery({ id, title });
-  const [debra, setDebra] = useState(data)
 
   //decide what to render
   let content;
@@ -33,7 +31,9 @@ const RelatedVideos = ({ id, title }: { id: number; title: string }) => {
     content = <Error message="There is no related video😕" />;
   }
   if (!isLoading && !isError && data?.length && data?.length > 0) {
-    content = data?.map((video) => <RelatedVideoItem key={video?.id} video={video}/>)
+    content = data?.map((video) => (
+      <RelatedVideoItem key={video?.id} video={video} />
+    ));
   }
 
   return (

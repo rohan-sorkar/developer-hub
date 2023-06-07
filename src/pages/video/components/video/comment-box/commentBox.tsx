@@ -6,8 +6,8 @@ import CommentBoxHeader from "./commentBoxHeader";
 const CommentBox = ({ video }: { video: VideoType }) => {
   return (
     <div className="my-5 md:my-8">
-      <CommentBoxHeader totalComments={video?.comments?.length} />
-      {video?.comments?.length > 0 ? <CommentBoxBody comments={video.comments}/> : <NoCommentsText />}
+      <CommentBoxHeader video={video} />
+      {video?.comments?.length > 0 ? <CommentBoxBody video={video}/> : <NoCommentsText />}
     </div>
   );
 };

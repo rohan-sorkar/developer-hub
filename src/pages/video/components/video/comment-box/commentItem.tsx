@@ -1,15 +1,56 @@
 import commentLikeImg from "../../../../../assets/images/comment-like2.png";
+import commentDislikeImg from '../../../../../assets/images/dislike.png';
 import editCommentImg from "../../../../../assets/images/editComment.webp";
 import deleteCommentImg from "../../../../../assets/images/deleteComment.png";
-import { CommentType } from "../../../../../types";
+import { CommentType, VideoType } from "../../../../../types";
 import moment from "moment";
-import { useAppSelector } from "../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import gravatarUrl from "gravatar-url";
+import { useDeleteCommentMutation, useLikeCommentMutation } from "../../../../../features/comments/commentsApi";
+import Error from "../../../../../components/ui/error";
+import { editComment } from "../../../../../features/comments/commentsSlice";
 
-const CommentItem = ({ comment }: { comment: CommentType }) => {
+const CommentItem = ({ video,  comment }: { video: VideoType, comment: CommentType }) => {
   const { user } = useAppSelector((state) => state.auth) || {};
   const { email: loggedInUserEmail } = user || {};
-  const isItMine = comment?.email === loggedInUserEmail;
+  const dispatch = useAppDispatch();
+  const [likeVideo, {isError: isLikeError}] = useLikeCommentMutation();
+  
+  const [deleteComment, {isError: isDeleteError}] = useDeleteCommentMutation();
+  const handleDeleteComment = (deleteId: string) => {
+    const copiedVideo = {...video};
+    const filteredComments = copiedVideo.comments.filter((v) => v.id !== deleteId);
+    const updatedVideo = {...copiedVideo, comments: filteredComments};
+    deleteComment({videoId: video?.id, updatedVideo});
+  }
+
+  const handleLikeComment = (commentId: string) => {
+    if(commentId == null) return;
+    const copyComments = [...video.comments];
+    const comment = copyComments.find((c) => c.id === commentId);
+    const hasLike = comment?.likes.includes(loggedInUserEmail);
+    let updateLikes: string[];
+    if (hasLike) {
+      const filteredLikes = comment?.likes.filter((like) => like !== loggedInUserEmail);
+      updateLikes = filteredLikes ? filteredLikes : [];
+    } else {
+      const clonedLikes = Object.assign([], comment?.likes);
+      updateLikes = [...clonedLikes, loggedInUserEmail];
+    }
+
+    const updatedComments = copyComments.map((value) => {
+      if (value.id === commentId) {
+        value = { ...value, likes: [...updateLikes] };
+      }
+      return value;
+    });
+
+    const updatedVideo = { ...video, comments: [...updatedComments] };
+    
+    likeVideo({videoId: video?.id, updatedVideo});
+  }
+
+  if(isLikeError || isDeleteError) return <Error/>;
 
   return (
     <div className="flex gap-2 p-5 shadow-sm">
@@ -31,14 +72,16 @@ const CommentItem = ({ comment }: { comment: CommentType }) => {
             </span>
           </div>
           {
-          isItMine && (
+          comment?.email === loggedInUserEmail && (
             <div className="mt-[-20px] flex items-center gap-7">
               <img
+                onClick={() => dispatch(editComment(comment?.id))}
                 className="h-5 w-5 rotate-90 cursor-pointer"
                 src={editCommentImg}
                 alt="edit-comment"
               />
               <img
+                onClick={() => handleDeleteComment(comment?.id)}
                 className="h-5 w-5 cursor-pointer"
                 src={deleteCommentImg}
                 alt="delete-comment"
@@ -51,8 +94,9 @@ const CommentItem = ({ comment }: { comment: CommentType }) => {
         </p>
         <div className="flex items-center gap-1">
           <img
-            className={`mr-1 h-7 cursor-pointer rounded md:h-9 ${isItMine && 'ring drop-shadow-xl'}`}
-            src={commentLikeImg}
+            onClick={() => handleLikeComment(comment.id)}
+            className={`mr-1 h-7 cursor-pointer rounded md:h-9`}
+            src={comment?.likes?.includes(loggedInUserEmail) ? commentDislikeImg : commentLikeImg}
             alt="like"
           />
           <h5 className="rounded bg-slate-300 px-2 font-medium italic text-teal-700 md:text-lg">

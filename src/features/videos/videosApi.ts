@@ -20,15 +20,16 @@ const videosApi = apiSlice.injectEndpoints({
     getAllVideos: builder.query<VideoType[], void>({
       query: () => '/videos',
     }),
-    getMoreVideos: builder.query<{data: VideoType[], totalCount: any}, number | string>({
+    getMoreVideos: builder.query<VideoType[], number | string>({
       query: (page) => `/videos?_page=${page}&_limit=8`,
       async onQueryStarted(arg, { getState, dispatch, queryFulfilled }) {
         try {
           const result = await queryFulfilled;
           dispatch(
             videosApi.util.updateQueryData("getVideos", undefined, (draft) => {
+              const clonedData = result?.data?.slice();
               return {
-                data: [...draft.data, ...result.data],
+                data: [...draft.data, ...clonedData],
                 totalCount: draft.totalCount,
               };
             })
