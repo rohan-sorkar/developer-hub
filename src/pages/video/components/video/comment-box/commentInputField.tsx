@@ -37,16 +37,17 @@ const CommentInputField = ({video} : {video: VideoType}) => {
   }
 
   const upDateComment = () => {
-    const updatedComments = video?.comments.map((c) => {
-      if(c.id === updateCommentId) {
-        c = {...c, title: searchTerm}
+    const updatedComments = video?.comments.map((comment) => {
+      if(comment.id === updateCommentId) {
+        comment = {...comment, title: searchTerm}
       }
-      return c
-    })
-    const updatedVideo = {...video, comments: [...updatedComments]}
-    updateVideoComment({id: video?.id, updatedVideo})
-    setSearchTerm('')
-    setIsUpdate(false)
+      return comment
+    });
+    const updatedVideo = {...video, comments: [...updatedComments]};
+    updateVideoComment({id: video?.id, updatedVideo});
+    setSearchTerm('');
+    setIsUpdate(false);
+    inputRef.current?.blur();
   }
 
   const createCommentAndUpdateVideo = () => {
@@ -57,10 +58,11 @@ const CommentInputField = ({video} : {video: VideoType}) => {
       email: userEmail,
       date: new Date(),
       likes: []
-    }
+    };
     const updatedVideo = {...video, comments: [newComment, ...video?.comments]};
     addComment({id: video?.id, updatedVideo: updatedVideo});
     setSearchTerm('');
+    inputRef.current?.blur();
   }
 
   useEffect(() => {

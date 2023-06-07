@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import { VideoType } from "../../../../types";
 
-const RelatedVideoItem = ({ video }: { video: VideoType }) => {
+interface PropTypes {
+  video: VideoType, 
+  isDragging: boolean
+}
+
+const RelatedVideoItem = ({ video, isDragging }: PropTypes) => {
   return (
     <Link
       to={`/videos/${video?.id}`}
-      className="mb-4 flex w-full cursor-pointer flex-row gap-2 rounded-lg border p-2 duration-300 hover:scale-105 hover:shadow"
+      className={`mb-4 flex w-full cursor-pointer flex-row gap-2 rounded-lg border p-2 duration-300 hover:scale-105 hover:shadow bg-white ${isDragging && 'related-video-shadow border-4 border-purple-400'}`}
     >
       <div className="relative h-auto w-[168px] flex-none">
         <img

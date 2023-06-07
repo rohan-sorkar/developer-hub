@@ -29,6 +29,12 @@
       "password": "$2a$10$DuxhTgTYEvHKw17pqWx5..M9HuGKjizthIbWzblQIVg7IIGpiNqV6",
       "name": "new",
       "id": 5
+    },
+    {
+      "email": "helloworld@gmail.com",
+      "password": "$2a$10$FOV5atUblm7APKwhvQITBeGbbP0KPkXE6Ge8lLfZthkhby2dr.cu2",
+      "name": "hello-world",
+      "id": 6
     }
   ],
   "videos": [
@@ -41,14 +47,6 @@
       "date": "February 2, 2022",
       "duration": "8:15",
       "comments": [
-        {
-          "id": "N2ex92nU8",
-          "title": "nice one🤩😉",
-          "name": "Rohan islam",
-          "email": "rohan@gmail.com",
-          "date": "2023-06-07T13:00:17.666Z",
-          "likes": []
-        },
         {
           "id": "3PmP0GJrR",
           "title": "dfdfdfdfdf😁",
@@ -200,7 +198,8 @@
       "link": "https://www.youtube-nocookie.com/embed/W3HulvsuqGI",
       "thumbnail": "https://i.ytimg.com/vi/W3HulvsuqGI/maxresdefault.jpg",
       "like": [
-        "rohan@gmail.com"
+        "rohan@gmail.com",
+        "helloworld@gmail.com"
       ],
       "dislike": [],
       "tags": [
