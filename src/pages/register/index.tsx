@@ -64,7 +64,7 @@ const Register = () => {
             </div>
             {isError  && <Error message={errorMessage}/>}
             <LinkForm link="/login" linkText="Already have an account?"/>
-            <SubmitButton disabled={isLoading} buttonText="Sign Up" />
+            <SubmitButton isLoading={isLoading} buttonText="Sign Up" />
           </form>
         </div>
     </FormLayout>

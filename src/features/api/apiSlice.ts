@@ -3,7 +3,7 @@ import { RootState } from "./../../app/store";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:9000",
+  baseUrl: import.meta.env.VITE_SERVER_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     const token: string = (getState() as RootState).auth?.accessToken;
     if (token) {
@@ -25,6 +25,7 @@ const apiSlice = createApi({
     
     return result;
   },
+  keepUnusedDataFor: 180,
   tagTypes: ['Video'],
   endpoints: () => ({}),
 });

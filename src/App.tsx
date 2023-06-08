@@ -4,7 +4,8 @@ import Navbar from './components/navbar';
 import PrivateRoute from './routes/privateRoute';
 import PublicRoute from './routes/publicRoute';
 import useAuthCheck from './hooks/useAuthCheck';
-import Loading from './components/ui/loaders/loaging';
+import Loading from './components/ui/loaders/loading';
+import { Suspense } from 'react';
 
 const App = () => {
   const authCheck = useAuthCheck();
@@ -12,6 +13,7 @@ const App = () => {
   return !authCheck ? <Loading/> : (
     <Router>
       <Navbar />
+      <Suspense fallback={''}>
       <Routes>
         <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/videos/:videoId" element={<PrivateRoute><Video /></PrivateRoute>} />
@@ -19,6 +21,7 @@ const App = () => {
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </Suspense>
     </Router>
   );
 };

@@ -1,14 +1,17 @@
-interface PropsType { buttonText: string, disabled?: boolean }
+import loadingSpinnerImg from '../../assets/images/loading-spinner.png';
 
-const SubmitButton = (props: PropsType ) => {
+interface PropsType { buttonText: string, isLoading?: boolean }
+
+const SubmitButton = ({buttonText, isLoading}: PropsType ) => {
   return (
     <div>
       <button
-        disabled={props.disabled}
+        disabled={isLoading}
         type="submit"
-        className="w-full rounded-md border border-transparent bg-red-400 py-2 font-medium tracking-wider text-white transition hover:bg-[#ED4C67] md:text-lg"
+        className={`${isLoading ? 'cursor-not-allowed bg-red-100 text-red-300' : 'bg-red-400 text-white transition hover:bg-[#ED4C67]'} w-full rounded-md py-2 font-medium tracking-wider md:text-lg flex justify-center items-center`}
       >
-        {props.buttonText}
+        {isLoading && <img className='w-7 rounded-full mr-3 animate-spin' src={loadingSpinnerImg}/>}
+        {buttonText}
       </button>
     </div>
   );

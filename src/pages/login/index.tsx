@@ -38,7 +38,7 @@ const Login = () => {
             </div>
             {isError  && <Error/>}
             <LinkForm link="/register" linkText="Don't have an account?"/>
-            <SubmitButton disabled={isLoading} buttonText="Sign In" />
+            <SubmitButton isLoading={isLoading} buttonText="Sign In" />
           </form>
         </div>
     </FormLayout>

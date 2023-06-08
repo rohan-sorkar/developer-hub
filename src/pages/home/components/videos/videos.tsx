@@ -9,17 +9,20 @@ import useScroll from "../../../../hooks/useScroll";
 const Videos = () => {
   const { data, isLoading, isError } = useGetVideosQuery();
   const { data: videoItems, totalCount } = data || {};
-  
-  const {filteredVideos} = useFilter(videoItems!);
-  const {hasMore, fetchMore} = useScroll(totalCount);
-  
+
+  const { filteredVideos } = useFilter(videoItems!);
+  const { hasMore, fetchMore } = useScroll(totalCount);
+
   //decide what to render
   let content;
-
   if (isLoading) {
-    content = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((v) => (
-      <VideoLoader key={v} />
-    ));
+    content = (
+      <>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((v) => (
+          <VideoLoader key={v} />
+        ))}
+      </>
+    );
   }
   if (!isLoading && isError) {
     content = <Error message="An error occurred in the videos" />;
@@ -33,9 +36,9 @@ const Videos = () => {
         dataLength={videoItems?.length}
         next={fetchMore}
         hasMore={hasMore}
-        loader={''}
+        loader={""}
       >
-        <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 pb-5 min-h-[300px]">
+        <div className="mx-auto grid min-h-[300px] max-w-7xl grid-cols-12 gap-4 px-5 pb-5 lg:px-0">
           {filteredVideos?.map((video) => (
             <VideoItem key={video.id} video={video} />
           ))}
@@ -49,7 +52,7 @@ const Videos = () => {
       {content}
     </div>
   ) : (
-    content
+    content ? content : <></>
   );
 };
 
